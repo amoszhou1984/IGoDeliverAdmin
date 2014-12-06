@@ -1,0 +1,49 @@
+﻿@model IGoDeliverAdmin.Models.RestaurantModel
+
+@{
+    ViewBag.Title = "删除餐馆";
+}
+
+<h2>删除</h2>
+
+<h3>确认删除此餐馆，以及相关菜品?</h3>
+<fieldset>
+    <legend>Item</legend>
+
+    <p>
+        <span class="display-label">
+            @Html.DisplayNameFor(model => model.Name)
+        </span>
+        <span class="display-field">
+            @Html.DisplayFor(model => model.Name)
+        </span>
+    </p>
+
+    <p>
+        <span class="display-label">
+            @Html.DisplayNameFor(model => model.ContactName)
+        </span>
+        <span class="display-field">
+            @Html.DisplayFor(model => model.ContactName)
+        </span>
+    </p>
+
+    <p>
+        <span class="display-label">
+            @Html.DisplayNameFor(model => model.ContactPhone)
+        </span>
+        <span class="display-field">
+            @Html.DisplayFor(model => model.ContactPhone)
+        </span>
+    </p>
+
+</fieldset>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="删除" />
+        |
+        @Html.ActionLink("返回餐馆列表", "Index")
+    </p>
+}

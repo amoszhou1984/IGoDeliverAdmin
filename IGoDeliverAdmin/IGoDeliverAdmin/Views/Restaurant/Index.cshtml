@@ -1,0 +1,35 @@
+﻿@model IEnumerable<IGoDeliverAdmin.Models.RestaurantModel>
+
+@{
+    ViewBag.Title = "餐馆管理后台";
+}
+
+<h2>餐馆管理后台</h2>
+<div id="RestaurantList">
+    @foreach (var restaurant in Model)
+    {
+        <hr />
+        <h4>
+            @Html.DisplayFor(modelItem => restaurant.Name)
+        </h4>
+        <p>
+            @Html.DisplayNameFor(modelItem => modelItem.ContactName)
+            @Html.DisplayFor(modelItem => restaurant.ContactName)
+        </p>
+        <p>
+            @Html.DisplayNameFor(modelItem => modelItem.ContactPhone)
+            @Html.DisplayFor(modelItem => restaurant.ContactPhone)
+        </p>
+        <p>
+            @Html.DisplayNameFor(modelItem => modelItem.Descriptions)
+            @Html.DisplayFor(modelItem => restaurant.Descriptions)
+        </p>
+        <p>
+            @Html.ActionLink("编辑", "Edit", "Restaurant", new { id = restaurant.Id }, null) |
+            @Html.ActionLink("详情", "Details", "Restaurant", new { id = restaurant.Id }, null) |
+            @Html.ActionLink("删除", "Delete", "Restaurant", new { id = restaurant.Id }, null)
+        </p>
+
+    }
+    @Html.ActionLink("添加餐馆", "Create")
+</div>

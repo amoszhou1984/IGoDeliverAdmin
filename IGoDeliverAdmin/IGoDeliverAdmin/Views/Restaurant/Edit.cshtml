@@ -1,0 +1,92 @@
+﻿@model IGoDeliverAdmin.Models.RestaurantModel
+
+@{
+    ViewBag.Title = "餐馆编辑";
+}
+
+<h2>餐馆编辑</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>餐馆信息编辑</legend>
+
+        @Html.HiddenFor(model => model.Id)
+        <p>
+            <span class="editor-label">
+                @Html.LabelFor(model => model.Name)
+            </span>
+            <span class="editor-field">
+                @Html.EditorFor(model => model.Name)
+                @Html.ValidationMessageFor(model => model.Name)
+            </span>
+        </p>
+        <p>
+            <span class="editor-label">
+                @Html.LabelFor(model => model.ContactName)
+            </span>
+            <span class="editor-field">
+                @Html.EditorFor(model => model.ContactName)
+                @Html.ValidationMessageFor(model => model.ContactName)
+            </span>
+        </p>
+        <p>
+            <span class="editor-label">
+                @Html.LabelFor(model => model.ContactPhone)
+            </span>
+            <span class="editor-field">
+                @Html.EditorFor(model => model.ContactPhone)
+                @Html.ValidationMessageFor(model => model.ContactPhone)
+            </span>
+        </p>
+        <p>
+            <span class="editor-label">
+                @Html.LabelFor(model => model.Descriptions)
+            </span>
+            <span class="editor-field">
+                @Html.EditorFor(model => model.Descriptions)
+                @Html.ValidationMessageFor(model => model.Descriptions)
+            </span>
+        </p>
+        <p>
+            <span class="editor-label">
+                @Html.LabelFor(model => model.UnitNumber)
+            </span>
+            <span class="editor-field">
+                @Html.EditorFor(model => model.UnitNumber)
+                @Html.ValidationMessageFor(model => model.UnitNumber)
+            </span>
+        </p>
+        <p>
+            <span class="editor-label">
+                @Html.LabelFor(model => model.StreetNumber)
+            </span>
+            <span class="editor-field">
+                @Html.EditorFor(model => model.StreetNumber)
+                @Html.ValidationMessageFor(model => model.StreetNumber)
+            </span>
+        </p>
+        <p>
+            <span class="editor-label">
+                @Html.LabelFor(model => model.Street)
+            </span>
+            <span class="editor-field">
+                @Html.EditorFor(model => model.Street)
+                @Html.ValidationMessageFor(model => model.Street)
+            </span>
+        </p>
+        <div>
+                @Html.Partial("_DishesView", Model)
+        </div>
+        <p>
+            <input type="submit" value="保存" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("返回", "Index")
+</div>
