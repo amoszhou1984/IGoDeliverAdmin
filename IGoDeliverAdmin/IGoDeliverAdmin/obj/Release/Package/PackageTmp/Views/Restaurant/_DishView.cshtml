@@ -1,0 +1,26 @@
+﻿@model IGoDeliverAdmin.Models.Dish
+
+<h4>菜品
+    @Html.DisplayFor(modelItem => modelItem.Name)
+</h4>
+<p>
+    价格
+    @Html.DisplayFor(modelItem => modelItem.Price)
+</p>
+<p>
+    辣度
+    @Html.DisplayFor(modelItem => modelItem.Spiciness)
+</p>
+<p>
+    起始时间
+    @Html.DisplayFor(modelItem => modelItem.StartTime)
+</p>
+<p>
+    有效期至
+    @Html.DisplayFor(modelItem => modelItem.EndTime)
+</p>
+<p>
+    @Html.ActionLink("编辑", "Edit", "Dish", new { id = Model.Id }, null) |
+    @Html.ActionLink("删除", "Delete", "Dish", new { id = Model.Id }, null)
+</p>
+

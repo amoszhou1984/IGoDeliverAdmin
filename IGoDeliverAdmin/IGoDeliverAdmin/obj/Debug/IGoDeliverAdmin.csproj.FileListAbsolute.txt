@@ -77,3 +77,9 @@ C:\Users\Amos\Documents\Visual Studio 2012\Projects\IGoDeliverAdmin\IGoDeliverAd
 C:\Users\Amos\Documents\Visual Studio 2012\Projects\IGoDeliverAdmin\IGoDeliverAdmin\obj\Debug\IGoDeliverAdmin.csprojResolveAssemblyReference.cache
 C:\Users\Amos\Documents\Visual Studio 2012\Projects\IGoDeliverAdmin\IGoDeliverAdmin\obj\Debug\IGoDeliverAdmin.dll
 C:\Users\Amos\Documents\Visual Studio 2012\Projects\IGoDeliverAdmin\IGoDeliverAdmin\obj\Debug\IGoDeliverAdmin.pdb
+C:\Users\Amos\Documents\Visual Studio 2012\Projects\IGoDeliverAdmin\IGoDeliverAdmin\bin\System.Net.Http.Formatting.dll
+C:\Users\Amos\Documents\Visual Studio 2012\Projects\IGoDeliverAdmin\IGoDeliverAdmin\bin\System.Web.Http.dll
+C:\Users\Amos\Documents\Visual Studio 2012\Projects\IGoDeliverAdmin\IGoDeliverAdmin\bin\System.Web.Http.WebHost.dll
+C:\Users\Amos\Documents\Visual Studio 2012\Projects\IGoDeliverAdmin\IGoDeliverAdmin\bin\System.Net.Http.Formatting.xml
+C:\Users\Amos\Documents\Visual Studio 2012\Projects\IGoDeliverAdmin\IGoDeliverAdmin\bin\System.Web.Http.xml
+C:\Users\Amos\Documents\Visual Studio 2012\Projects\IGoDeliverAdmin\IGoDeliverAdmin\bin\System.Web.Http.WebHost.xml

@@ -1,0 +1,14 @@
+﻿@model IGoDeliverAdmin.Models.RestaurantModel
+
+<div id="dishList">
+    @foreach (var item in Model.Dishes)
+    {
+        <hr />
+        <div>
+            @Html.Partial("_DishView", item)
+        </div>
+    }
+    <p>
+        @Html.ActionLink("Create New", "Create", "Dish", new { id = Model.Id }, null)
+    </p>
+</div>

@@ -50,7 +50,7 @@ namespace IGoDeliverAdmin.Controllers
 
         //
         // GET: /Restaurant/Create
-
+        [Authorize]
         public ActionResult Create()
         {
 
@@ -60,7 +60,7 @@ namespace IGoDeliverAdmin.Controllers
 
         //
         // POST: /Restaurant/Create
-
+        [Authorize]
         [HttpPost]
         public ActionResult Create(int id, FormCollection collection)
         {
@@ -78,7 +78,7 @@ namespace IGoDeliverAdmin.Controllers
 
         //
         // GET: /Restaurant/Edit/5
-
+        [Authorize]
         public ActionResult Edit(int id)
         {
             RestaurantModel restaurantModel = null;
@@ -106,7 +106,7 @@ namespace IGoDeliverAdmin.Controllers
 
         //
         // POST: /Restaurant/Edit/5
-
+        [Authorize]
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
@@ -140,7 +140,7 @@ namespace IGoDeliverAdmin.Controllers
 
         //
         // GET: /Restaurant/Delete/5
-
+        [Authorize]
         public ActionResult Delete(int id = 0)
         {
             RestaurantModel restaurantModel = null;
@@ -164,7 +164,7 @@ namespace IGoDeliverAdmin.Controllers
 
         //
         // POST: /Restaurant/Delete/5
-
+        [Authorize]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

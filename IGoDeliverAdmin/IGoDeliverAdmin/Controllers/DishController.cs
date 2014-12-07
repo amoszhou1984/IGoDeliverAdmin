@@ -15,14 +15,6 @@ namespace IGoDeliverAdmin.Controllers
     {
         private IGoDeliverEntities db = new IGoDeliverEntities();
 
-        //
-        // GET: /Dish/
-
-        public ActionResult Index()
-        {
-            var dishes = db.Dishes.Include(d => d.Restaurant);
-            return View(dishes.ToList());
-        }
 
         //
         // GET: /Dish/Details/5
@@ -40,7 +32,7 @@ namespace IGoDeliverAdmin.Controllers
         //
         // GET: /Dish/Create/id
         // The id refers to the restaurant id
-
+        [Authorize]
         public ActionResult Create(int id)
         {
             ViewBag.RestaurantId = id;
@@ -49,7 +41,7 @@ namespace IGoDeliverAdmin.Controllers
 
         //
         // POST: /Dish/Create
-
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(FormCollection collection)
@@ -70,7 +62,7 @@ namespace IGoDeliverAdmin.Controllers
 
         //
         // GET: /Dish/Edit/5
-
+        [Authorize]
         public ActionResult Edit(int id = 0)
         {
             Dish dish = db.Dishes.Find(id);
@@ -83,7 +75,7 @@ namespace IGoDeliverAdmin.Controllers
 
         //
         // POST: /Dish/Edit/5
-
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, FormCollection collection)
@@ -103,7 +95,7 @@ namespace IGoDeliverAdmin.Controllers
 
         //
         // GET: /Dish/Delete/5
-
+        [Authorize]
         public ActionResult Delete(int id = 0)
         {
             Dish dish = db.Dishes.Find(id);
@@ -116,7 +108,7 @@ namespace IGoDeliverAdmin.Controllers
 
         //
         // POST: /Dish/Delete/5
-
+        [Authorize]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

@@ -1,0 +1,22 @@
+﻿@model IGoDeliverAdmin.Models.RestaurantModel
+
+@{
+    ViewBag.Title = "title";
+}
+
+<h2>title</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Id, "Restaurant")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("SuburbIds", String.Empty)
+            @Html.ValidationMessageFor(model => model.Suburb)
+        </div>
+    </fieldset>
+}
