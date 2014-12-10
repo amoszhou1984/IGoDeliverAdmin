@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <parameters>
   <parameter name="DefaultConnection-Web.config Connection String" description="DefaultConnection Connection String used in web.config by the application to access the database." defaultValue="Data Source=yvhshmjhvi.database.windows.net;Initial Catalog=IGoDeliver;User ID=igodeliver;Password=Pa55w0rd!;Application Name=EntityFramework" tags="SqlConnectionString">
-    <parameterEntry kind="XmlFile" scope="C:\\Users\\Amos\\Documents\\Visual\ Studio\ 2012\\Projects\\IGoDeliverAdmin\\IGoDeliverAdmin\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Amos\\Documents\\GitHub\\IGoDeliverAdmin\\IGoDeliverAdmin\\IGoDeliverAdmin\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
   </parameter>
   <parameter name="IGoDeliverEntities-Web.config Connection String" description="IGoDeliverEntities Connection String used in web.config by the application to access the database." defaultValue="metadata=res://*/Models.IGoDeliver.csdl|res://*/Models.IGoDeliver.ssdl|res://*/Models.IGoDeliver.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=yvhshmjhvi.database.windows.net;initial catalog=IGoDeliver;user id=igodeliver;password=Pa55w0rd!;application name=EntityFramework;MultipleActiveResultSets=True&quot;" tags="SqlConnectionString">
-    <parameterEntry kind="XmlFile" scope="C:\\Users\\Amos\\Documents\\Visual\ Studio\ 2012\\Projects\\IGoDeliverAdmin\\IGoDeliverAdmin\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='IGoDeliverEntities']/@connectionString" />
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Amos\\Documents\\GitHub\\IGoDeliverAdmin\\IGoDeliverAdmin\\IGoDeliverAdmin\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='IGoDeliverEntities']/@connectionString" />
   </parameter>
 </parameters>

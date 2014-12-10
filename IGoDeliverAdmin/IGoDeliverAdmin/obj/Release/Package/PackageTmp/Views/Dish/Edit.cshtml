@@ -4,7 +4,7 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
+<h2>菜品编辑</h2>
 
 @using (Html.BeginForm())
 {
@@ -17,7 +17,7 @@
         @Html.HiddenFor(model => model.Id)
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Name)
+            菜品
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.Name)
@@ -25,7 +25,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Price)
+            价格
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.Price)
@@ -33,7 +33,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.StartTime)
+            有效期自
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.StartTime)
@@ -41,7 +41,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.EndTime)
+            有效期至
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.EndTime)
@@ -49,7 +49,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Spiciness)
+            辣度
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.Spiciness)
