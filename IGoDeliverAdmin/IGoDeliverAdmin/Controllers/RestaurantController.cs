@@ -29,10 +29,10 @@ namespace IGoDeliverAdmin.Controllers
                     ContactName = r.ContactName,
                     ContactPhone = r.ContactPhone,
                     Descriptions = r.Description,
-                    //UnitNumber = r.Geolocation.UnitNo,
-                    //StreetNumber = r.Geolocation.StreetNo,
-                    //Street = r.Geolocation.Street,
-                    //Suburb = r.Geolocation.Suburb.Name,
+                    UnitNumber = r.Geolocation.UnitNo,
+                    StreetNumber = r.Geolocation.StreetNo,
+                    Street = r.Geolocation.Street,
+                    Suburb = r.Geolocation.Suburb.Name,
                     //StateProvince = r.Geolocation.Suburb.StateProvince1.Name,
                     Dishes = r.Dishes
                 });
@@ -53,7 +53,6 @@ namespace IGoDeliverAdmin.Controllers
         [Authorize]
         public ActionResult Create()
         {
-
             ViewBag.SuburbIds = new SelectList(iGoDeliverEntities.Suburbs, "Id", "Name");
             return View();
         }
@@ -62,12 +61,24 @@ namespace IGoDeliverAdmin.Controllers
         // POST: /Restaurant/Create
         [Authorize]
         [HttpPost]
-        public ActionResult Create(int id, FormCollection collection)
+        public ActionResult Create(FormCollection collection)
         {
             try
             {
-                // TODO: Add insert logic here
-
+                var location = new Geolocation();
+                location.SuburbId = int.Parse(collection.Get("SuburbIds"));
+                location.UnitNo = collection.Get("UnitNumber");
+                location.StreetNo = int.Parse(collection.Get("StreetNumber"));
+                location.Street = collection.Get("Street");
+                iGoDeliverEntities.Geolocations.Add(location);
+                var restaurant = new Restaurant();
+                restaurant.RestaurantName = collection.Get("Name");
+                restaurant.ContactName = collection.Get("ContactName");
+                restaurant.ContactPhone = collection.Get("ContactPhone");
+                restaurant.Description = collection.Get("Descriptions");
+                restaurant.LocId = location.LocId;
+                iGoDeliverEntities.Restaurants.Add(restaurant);
+                iGoDeliverEntities.SaveChanges();
                 return RedirectToAction("Index");
             }
             catch
@@ -88,6 +99,7 @@ namespace IGoDeliverAdmin.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.SuburbIds = new SelectList(iGoDeliverEntities.Suburbs, "Id", "Name", restaurant.Geolocation.SuburbId);
             restaurantModel = new RestaurantModel
             {
                 Id = restaurant.Id,
@@ -128,6 +140,7 @@ namespace IGoDeliverAdmin.Controllers
                 restaurant.ContactName = collection.Get("ContactName");
                 restaurant.ContactPhone = collection.Get("ContactPhone");
                 restaurant.Description = collection.Get("Descriptions");
+                restaurant.Geolocation.SuburbId = int.Parse(collection.Get("SuburbIds"));
                 iGoDeliverEntities.SaveChanges();
                 return RedirectToAction("Index");
 

@@ -5,6 +5,7 @@
 }
 
 <h2>餐馆管理后台</h2>
+<div>@Html.ActionLink("添加餐馆", "Create")</div>
 <div id="RestaurantList">
     @foreach (var restaurant in Model)
     {
@@ -31,5 +32,4 @@
         </p>
 
     }
-    @Html.ActionLink("添加餐馆", "Create")
 </div>

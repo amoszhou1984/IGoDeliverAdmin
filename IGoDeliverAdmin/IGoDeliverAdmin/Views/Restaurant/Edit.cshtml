@@ -78,9 +78,21 @@
                 @Html.ValidationMessageFor(model => model.Street)
             </span>
         </p>
-        <div>
+        <p class="editor-label">
+            @Html.LabelFor(model => model.Suburb, "Suburb")
+        </p>
+        <p class="editor-field">
+            @Html.DropDownList("SuburbIds", String.Empty)
+        </p>
+        @if (Model.Dishes != null)
+        {
+            <div>
                 @Html.Partial("_DishesView", Model)
-        </div>
+            </div>
+        }
+        <p>
+            @Html.ActionLink("Create New", "Create", "Dish", new { id = Model.Id }, null)
+        </p>
         <p>
             <input type="submit" value="保存" />
         </p>
