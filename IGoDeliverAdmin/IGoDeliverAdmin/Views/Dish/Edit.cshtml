@@ -1,4 +1,4 @@
-﻿@model IGoDeliverAdmin.Models.Dish
+﻿@model IGoDeliverAdmin.Entity.Dish
 
 @{
     ViewBag.Title = "Edit";
@@ -33,7 +33,7 @@
         </div>
 
         <div class="editor-label">
-            有效期自
+            有效期自 (YYYY-MM-DD)
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.StartTime)
@@ -41,7 +41,7 @@
         </div>
 
         <div class="editor-label">
-            有效期至
+            有效期至 (YYYY-MM-DD)
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.EndTime)
@@ -55,7 +55,21 @@
             @Html.EditorFor(model => model.Spiciness)
             @Html.ValidationMessageFor(model => model.Spiciness)
         </div>
-
+        <div class="imageTable">
+            <table>
+                <tbody>
+                    <tr>
+                        @foreach (var picture in Model.DishPictures)
+                        {
+                            <img alt="Item Picture" class="picture-cell" src="@picture.PictureOfDish.Path" />
+                        }
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            @Html.ActionLink("添加和管理菜品图片", "ManagePicture", new { id = Model.Id })
+        </div>
         <p>
             <input type="submit" value="Save" />
         </p>

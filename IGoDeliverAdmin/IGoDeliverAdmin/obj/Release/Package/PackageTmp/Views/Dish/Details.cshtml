@@ -1,4 +1,4 @@
-﻿@model IGoDeliverAdmin.Models.Dish
+﻿@model IGoDeliverAdmin.Entity.Dish
 
 @{
     ViewBag.Title = "Details";
@@ -10,48 +10,48 @@
     <legend>Dish</legend>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Name)
+        @Html.DisplayNameFor(model => model.Name)
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.Name)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Price)
+        @Html.DisplayNameFor(model => model.Price)
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.Price)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.StartTime)
+        @Html.DisplayNameFor(model => model.StartTime)
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.StartTime)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.EndTime)
+        @Html.DisplayNameFor(model => model.EndTime)
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.EndTime)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Spiciness)
+        @Html.DisplayNameFor(model => model.Spiciness)
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.Spiciness)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Restaurant.RestaurantName)
+        @Html.DisplayNameFor(model => model.Restaurant.RestaurantName)
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.Restaurant.RestaurantName)
     </div>
 </fieldset>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Edit", "Restaurant", new { id = Model.RestaurantId })
 </p>

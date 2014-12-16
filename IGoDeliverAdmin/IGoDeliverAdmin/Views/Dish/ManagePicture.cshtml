@@ -1,0 +1,35 @@
+﻿@model IGoDeliverAdmin.Entity.Dish
+@{
+    ViewBag.Title = "添加和管理菜品图片";
+}
+
+<h2>图片上传管理</h2>
+@if (Model != null)
+{
+    <form method="GET">
+        <div class="imageTable">
+            <table>
+                <tbody>
+                    <tr>
+                        @foreach (var picture in Model.DishPictures)
+                        {
+                            <td>
+                                @Html.Partial("_PicPanel", picture)
+                            </td>      
+                        }
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </form>
+
+                        using (Html.BeginForm("SaveFile", "Dish", new { dishId = Model.Id }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        { 
+    <input type="file" name="fileToUpload" />
+    <input type="submit" name="Submit" id="Submit" value="Upload" />
+                        }
+    
+    <div>
+        @Html.ActionLink("返回编辑菜单", "Edit", new { id = Model.Id })
+    </div>
+}

@@ -1,0 +1,18 @@
+﻿@model IGoDeliverAdmin.Entity.DishPicture
+
+<ul class="pic-cell-list">
+    <li>
+        <img class="picture-cell" src="@Model.PictureOfDish.Path" />
+    </li>
+    <li>
+        @Html.ActionLink("删除", "DeletePicForItem", "Dish", new { itemid = Model.DishId, picid = Model.PictureId }, null)
+        @if (Model.IsDefault)
+        {
+            @Html.DisplayName("默认图片")
+        }
+        @if (!Model.IsDefault)
+        {
+            @Html.ActionLink("设为默认图片", "SetDefaultPic", "Dish", new { ItemId = Model.DishId, PicId = Model.PictureId }, null)
+        }
+    </li>
+</ul>

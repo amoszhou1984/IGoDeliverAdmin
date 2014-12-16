@@ -7,12 +7,16 @@
     <EntitySet Name="DeliveryOrder" EntityType="IGoDeliverModel.Store.DeliveryOrder" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Dish" EntityType="IGoDeliverModel.Store.Dish" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="DishCategory" EntityType="IGoDeliverModel.Store.DishCategory" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DishPicture" EntityType="IGoDeliverModel.Store.DishPicture" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Geolocation" EntityType="IGoDeliverModel.Store.Geolocation" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Payment" EntityType="IGoDeliverModel.Store.Payment" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Picture" EntityType="IGoDeliverModel.Store.Picture" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Promotion" EntityType="IGoDeliverModel.Store.Promotion" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Restaurant" EntityType="IGoDeliverModel.Store.Restaurant" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RestaurantPicture" EntityType="IGoDeliverModel.Store.RestaurantPicture" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="StateProvince" EntityType="IGoDeliverModel.Store.StateProvince" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Suburb" EntityType="IGoDeliverModel.Store.Suburb" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="sysdiagrams" EntityType="IGoDeliverModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="UserProfile" EntityType="IGoDeliverModel.Store.UserProfile" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="webpages_Membership" EntityType="IGoDeliverModel.Store.webpages_Membership" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="webpages_OAuthMembership" EntityType="IGoDeliverModel.Store.webpages_OAuthMembership" store:Type="Tables" Schema="dbo" />
@@ -38,9 +42,17 @@
       <End Role="Category" EntitySet="Category" />
       <End Role="DishCategory" EntitySet="DishCategory" />
     </AssociationSet>
-    <AssociationSet Name="FK_DishCategory_Dish" Association="IGoDeliverModel.Store.FK_DishCategory_Dish">
+    <AssociationSet Name="FK_DishPicture_Dish" Association="IGoDeliverModel.Store.FK_DishPicture_Dish">
       <End Role="Dish" EntitySet="Dish" />
-      <End Role="DishCategory" EntitySet="DishCategory" />
+      <End Role="DishPicture" EntitySet="DishPicture" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DishPicture_Picture" Association="IGoDeliverModel.Store.FK_DishPicture_Picture">
+      <End Role="Picture" EntitySet="Picture" />
+      <End Role="DishPicture" EntitySet="DishPicture" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Geolocation_Suburb" Association="IGoDeliverModel.Store.FK_Geolocation_Suburb">
+      <End Role="Suburb" EntitySet="Suburb" />
+      <End Role="Geolocation" EntitySet="Geolocation" />
     </AssociationSet>
     <AssociationSet Name="FK_Payment_DeliveryOrder" Association="IGoDeliverModel.Store.FK_Payment_DeliveryOrder">
       <End Role="DeliveryOrder" EntitySet="DeliveryOrder" />
@@ -54,6 +66,14 @@
       <End Role="Geolocation" EntitySet="Geolocation" />
       <End Role="Restaurant" EntitySet="Restaurant" />
     </AssociationSet>
+    <AssociationSet Name="FK_RestaurantPicture_Picture" Association="IGoDeliverModel.Store.FK_RestaurantPicture_Picture">
+      <End Role="Picture" EntitySet="Picture" />
+      <End Role="RestaurantPicture" EntitySet="RestaurantPicture" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RestaurantPicture_Restaurant" Association="IGoDeliverModel.Store.FK_RestaurantPicture_Restaurant">
+      <End Role="Restaurant" EntitySet="Restaurant" />
+      <End Role="RestaurantPicture" EntitySet="RestaurantPicture" />
+    </AssociationSet>
     <AssociationSet Name="fk_RoleId" Association="IGoDeliverModel.Store.fk_RoleId">
       <End Role="webpages_Roles" EntitySet="webpages_Roles" />
       <End Role="webpages_UsersInRoles" EntitySet="webpages_UsersInRoles" />
@@ -61,10 +81,6 @@
     <AssociationSet Name="FK_Suburb_StateProvince" Association="IGoDeliverModel.Store.FK_Suburb_StateProvince">
       <End Role="StateProvince" EntitySet="StateProvince" />
       <End Role="Suburb" EntitySet="Suburb" />
-    </AssociationSet>
-    <AssociationSet Name="fk_UserId" Association="IGoDeliverModel.Store.fk_UserId">
-      <End Role="UserProfile" EntitySet="UserProfile" />
-      <End Role="webpages_UsersInRoles" EntitySet="webpages_UsersInRoles" />
     </AssociationSet>
     <AssociationSet Name="FK_UserProfile_CreditCard" Association="IGoDeliverModel.Store.FK_UserProfile_CreditCard">
       <End Role="CreditCard" EntitySet="CreditCard" />
@@ -79,16 +95,16 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
-    <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
     <Property Name="ParentCategoryId" Type="int" />
   </EntityType>
   <EntityType Name="CreditCard">
     <Key>
       <PropertyRef Name="CreditCardID" />
     </Key>
-    <Property Name="CreditCardID" Type="int" Nullable="false" />
-    <Property Name="CardType" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="CreditCardID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="CardType" Type="nvarchar" Nullable="false" MaxLength="50" />
     <Property Name="CardNumber" Type="nvarchar" Nullable="false" MaxLength="25" />
     <Property Name="ExpMonth" Type="tinyint" Nullable="false" />
     <Property Name="ExpYear" Type="smallint" Nullable="false" />
@@ -109,7 +125,7 @@
     <Key>
       <PropertyRef Name="OrderId" />
     </Key>
-    <Property Name="OrderId" Type="int" Nullable="false" />
+    <Property Name="OrderId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="PriceTotal" Type="float" Nullable="false" />
     <Property Name="OrderDateTime" Type="datetime" />
     <Property Name="Status" Type="char" MaxLength="1" />
@@ -119,11 +135,10 @@
   </EntityType>
   <EntityType Name="Dish">
     <Key>
-      <PropertyRef Name="DishId" />
+      <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
-    <Property Name="DishId" Type="int" Nullable="false" />
-    <Property Name="Name" Type="varchar" Nullable="false" MaxLength="150" />
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="150" />
     <Property Name="Price" Type="float" Nullable="false" />
     <Property Name="StartTime" Type="datetime" />
     <Property Name="EndTime" Type="datetime" />
@@ -138,17 +153,26 @@
     <Property Name="DishId" Type="int" Nullable="false" />
     <Property Name="CategoryId" Type="int" Nullable="false" />
   </EntityType>
+  <EntityType Name="DishPicture">
+    <Key>
+      <PropertyRef Name="DishId" />
+      <PropertyRef Name="PictureId" />
+    </Key>
+    <Property Name="DishId" Type="int" Nullable="false" />
+    <Property Name="PictureId" Type="int" Nullable="false" />
+    <Property Name="IsDefault" Type="bit" Nullable="false" />
+  </EntityType>
   <EntityType Name="Geolocation">
     <Key>
       <PropertyRef Name="LocId" />
     </Key>
-    <Property Name="LocId" Type="int" Nullable="false" />
+    <Property Name="LocId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="SuburbId" Type="int" Nullable="false" />
     <Property Name="Altitude" Type="float" />
     <Property Name="Latitude" Type="float" />
-    <Property Name="Street" Type="varchar" Nullable="false" MaxLength="150" />
+    <Property Name="Street" Type="nvarchar" Nullable="false" MaxLength="150" />
     <Property Name="StreetNo" Type="int" Nullable="false" />
-    <Property Name="UnitNo" Type="int" />
+    <Property Name="UnitNo" Type="nvarchar" MaxLength="10" />
   </EntityType>
   <EntityType Name="Payment">
     <Key>
@@ -160,13 +184,21 @@
     <Property Name="OrderId" Type="int" Nullable="false" />
     <Property Name="UserId" Type="int" Nullable="false" />
   </EntityType>
+  <EntityType Name="Picture">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Thumbnail" Type="varbinary" />
+    <Property Name="Path" Type="varchar" Nullable="false" MaxLength="500" />
+  </EntityType>
   <EntityType Name="Promotion">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="Type" Type="int" Nullable="false" />
-    <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
     <Property Name="Percentage" Type="int" />
     <Property Name="Amount" Type="int" />
     <Property Name="Code" Type="nchar" MaxLength="10" />
@@ -177,15 +209,27 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
-    <Property Name="Name" Type="varchar" Nullable="false" MaxLength="250" />
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="RestaurantName" Type="nvarchar" Nullable="false" MaxLength="100" />
     <Property Name="LocId" Type="int" />
+    <Property Name="ContactName" Type="nvarchar" MaxLength="50" />
+    <Property Name="ContactPhone" Type="nvarchar" MaxLength="20" />
+    <Property Name="Description" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="RestaurantPicture">
+    <Key>
+      <PropertyRef Name="RestaurantId" />
+      <PropertyRef Name="PictureId" />
+    </Key>
+    <Property Name="RestaurantId" Type="int" Nullable="false" />
+    <Property Name="PictureId" Type="int" Nullable="false" />
+    <Property Name="IsDefault" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="StateProvince">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="Code" Type="nchar" Nullable="false" MaxLength="3" />
     <Property Name="CountryRegionCode" Type="nvarchar" Nullable="false" MaxLength="3" />
     <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
@@ -194,20 +238,30 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
-    <Property Name="Name" Type="varchar" MaxLength="50" />
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
     <Property Name="StateProvince" Type="int" Nullable="false" />
+    <Property Name="PostalCode" Type="int" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
   </EntityType>
   <EntityType Name="UserProfile">
     <Key>
       <PropertyRef Name="UserId" />
     </Key>
-    <Property Name="UserId" Type="int" Nullable="false" />
-    <Property Name="UserName" Type="varchar" Nullable="false" MaxLength="50" />
-    <Property Name="Email" Type="varbinary" Nullable="false" MaxLength="150" />
-    <Property Name="Phone" Type="varchar" Nullable="false" MaxLength="15" />
+    <Property Name="UserId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Phone" Type="nvarchar" Nullable="false" MaxLength="15" />
     <Property Name="LocId" Type="int" />
-    <Property Name="PaypalAcount" Type="varchar" MaxLength="50" />
+    <Property Name="PaypalAcount" Type="nvarchar" MaxLength="50" />
     <Property Name="CreditCardId" Type="int" />
   </EntityType>
   <EntityType Name="webpages_Membership">
@@ -310,15 +364,39 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_DishCategory_Dish">
+  <Association Name="FK_DishPicture_Dish">
     <End Role="Dish" Type="IGoDeliverModel.Store.Dish" Multiplicity="1" />
-    <End Role="DishCategory" Type="IGoDeliverModel.Store.DishCategory" Multiplicity="*" />
+    <End Role="DishPicture" Type="IGoDeliverModel.Store.DishPicture" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Dish">
-        <PropertyRef Name="DishId" />
+        <PropertyRef Name="Id" />
       </Principal>
-      <Dependent Role="DishCategory">
+      <Dependent Role="DishPicture">
         <PropertyRef Name="DishId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DishPicture_Picture">
+    <End Role="Picture" Type="IGoDeliverModel.Store.Picture" Multiplicity="1" />
+    <End Role="DishPicture" Type="IGoDeliverModel.Store.DishPicture" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Picture">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DishPicture">
+        <PropertyRef Name="DishId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Geolocation_Suburb">
+    <End Role="Suburb" Type="IGoDeliverModel.Store.Suburb" Multiplicity="1" />
+    <End Role="Geolocation" Type="IGoDeliverModel.Store.Geolocation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Suburb">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Geolocation">
+        <PropertyRef Name="SuburbId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -358,6 +436,30 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_RestaurantPicture_Picture">
+    <End Role="Picture" Type="IGoDeliverModel.Store.Picture" Multiplicity="1" />
+    <End Role="RestaurantPicture" Type="IGoDeliverModel.Store.RestaurantPicture" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Picture">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RestaurantPicture">
+        <PropertyRef Name="PictureId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RestaurantPicture_Restaurant">
+    <End Role="Restaurant" Type="IGoDeliverModel.Store.Restaurant" Multiplicity="1" />
+    <End Role="RestaurantPicture" Type="IGoDeliverModel.Store.RestaurantPicture" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Restaurant">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RestaurantPicture">
+        <PropertyRef Name="RestaurantId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="fk_RoleId">
     <End Role="webpages_Roles" Type="IGoDeliverModel.Store.webpages_Roles" Multiplicity="1" />
     <End Role="webpages_UsersInRoles" Type="IGoDeliverModel.Store.webpages_UsersInRoles" Multiplicity="*" />
@@ -379,18 +481,6 @@
       </Principal>
       <Dependent Role="Suburb">
         <PropertyRef Name="StateProvince" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="fk_UserId">
-    <End Role="UserProfile" Type="IGoDeliverModel.Store.UserProfile" Multiplicity="1" />
-    <End Role="webpages_UsersInRoles" Type="IGoDeliverModel.Store.webpages_UsersInRoles" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="UserProfile">
-        <PropertyRef Name="UserId" />
-      </Principal>
-      <Dependent Role="webpages_UsersInRoles">
-        <PropertyRef Name="UserId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
